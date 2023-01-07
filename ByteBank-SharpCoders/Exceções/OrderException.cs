@@ -2,23 +2,10 @@
 
 namespace ByteBank_SharpCoders.Exceções
 {
-    [Serializable]
-    internal class OrderException : Exception
-    {
-        public OrderException()
+    public class OrderException : Exception
+    {    
+        public OrderException(string message) : base(message)
         {
-        }
-
-        public OrderException(string? message) : base(message)
-        {
-        }
-
-        public OrderException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
-
-        protected OrderException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+        }      
     }
 }

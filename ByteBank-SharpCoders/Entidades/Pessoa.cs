@@ -1,4 +1,5 @@
-﻿using ByteBank_SharpCoders.Núcleo.Entidades;
+﻿using ByteBank_SharpCoders.Exceções;
+using ByteBank_SharpCoders.Núcleo.Entidades;
 using ByteBank_SharpCoders.ObjetosValor;
 
 namespace ByteBank_SharpCoders.Entidades
@@ -24,7 +25,26 @@ namespace ByteBank_SharpCoders.Entidades
         public Cpf Cpf { get; private set; }
         public Email Email { get; private set; }
 
-        public Pessoa(string primeiroNome, string ultimoNome, DateTime dataNascimento, Cpf cpf, Email email)
+        public double Saldo { get; set; }
+
+        private string senha;
+        public string Senha
+        {
+            get { return senha; }
+            set
+            {
+                if (value.Length < 6 || value.Length > 8)
+                {
+                    throw new OrderException("\n\tSenha inválida. O senha deve conter no mínimo 6 e no máximo 8 caractéres.");
+                }
+                else
+                {
+                    senha = value;
+                }
+            }
+        }
+
+        public Pessoa(string primeiroNome, string ultimoNome, DateTime dataNascimento, Cpf cpf, Email email, string senha)
         {
             PrimeiroNome = primeiroNome.Trim();
             Ultimonome = ultimoNome.Trim();
@@ -42,9 +62,10 @@ namespace ByteBank_SharpCoders.Entidades
             Cpf = cpf;
             Email = email;
             DataHoraRegisto = DateTime.Now;
+            Senha = senha;
         }
 
-        public string FullName =>
+        public string NomeCompleto =>
             $"{PrimeiroNome} {Ultimonome}";
     }
 }

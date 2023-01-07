@@ -23,20 +23,17 @@ class Program
                     _cliente.Add(Utils.CadastrarCliente());
                     break;
                 case 2:
-                    _products.Add(Utils.RegisterProduct());
+                    Utils.DeletarCliente(_cliente);
                     break;
                 case 3:
-                    _orders.Add(Utils.RegisterOrder(_cliente, _products));
-                    break;
-                case 4:
-                    Utils.ListCustomers(_cliente);
+                    Utils.ListarClientes(_cliente);
                     break;
                 case 5:
-                    Utils.ListProducts(_products);
+                    Utils.QuantiaTotalBanco();
                     break;
-                case 6:
-                    Utils.ListOrders(_orders);
-                    break;
+                //case 6:
+                //    Utils.ListOrders(_orders);
+                //    break;
                 default:
                     Mensagem.OpcaoInvalida();
                     break;
